@@ -1,24 +1,24 @@
-h1 myUglyScripts
+# myUglyScripts
 
 Very simple, robust and ugly scripts for **D-Link 320L**
 Here we have a little count of directories:
 
     bin/
-		opt/
-		stats/
+    opt/
+    stats/
 
-In **bin/** directory places main binaries
+In **bin/** directory places main binaries.
 Directory **opt/** contains files for OptWare. If you havent OptWare... What are you doing here?
 In **stats/** you can find shell-scripts which making some statistic for MRTG
 
-h2 Questions/Answers
+## Questions/Answers
 
 Any questions will be ignored.
 Joke **=)**
 
 Send me anything about myUglyScripts right here - on the GitHub.
 
-h4 Revision
+## Revision
 
 Here I will write something about revision
 

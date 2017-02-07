@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# Startup script for 
+#
+# Stop myself if running
+PIDFILE=/mnt/HD/HD_a2/myScripts/log/myDaemon-mrtg.pid
+[ -f ${PIDFILE} ] && kill `cat ${PIDFILE}`
+
+rm $PIDFILE
+
+/mnt/HD/HD_a2/myScripts/bin/myDaemon-mrtg.pl start
+
+

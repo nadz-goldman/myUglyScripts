@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# Startup script for 
+#
+# Stop myself if running
+#PIDFILE=/opt/var/run/olololo.pid
+#[ -f ${PIDFILE} ] && kill `cat ${PIDFILE}`
+#rm $PIDFILE
+#
+#/mnt/HD/HD_a2/myScripts/bin/myDaemon-mrtg.pl start
+
+# ipv6 ne vygruzhaetsya, t.k. kto-to ego ispolzuet
+
+/usr/bin/rmmod  ipip xfrm6_mode_tunnel xfrm6_mode_transport xfrm6_mode_beet ip6_tunnel tunnel6 sit tunnel4
+
+

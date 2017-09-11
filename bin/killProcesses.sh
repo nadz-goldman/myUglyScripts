@@ -1,11 +1,13 @@
 #!/bin/sh
 
-#
-# Master! We need more gold!
-# Oh! Memory! We need more memory!
-#
-
 /bin/killall access_mtd
 /bin/killall rlog
+/bin/killall mydlink-watch-dog.sh
+/bin/killall signalc
+/bin/killall mylogd
 /bin/killall avahi-daemon
-/bin/killall p2p_server
+/usr/sbin/maild stop
+/usr/sbin/p2p.sh stop
+
+
+

@@ -1,6 +1,12 @@
 #!/bin/sh
 
 
+###
+### DONT USE IT IN ANYWAY
+### IF YOU DONT UNDERSTAND
+### WHAT IS IT AND FOR WHAT IT
+###
+
 echo "Changing scheduler"
 echo noop > /sys/block/sda/queue/scheduler
 echo noop > /sys/block/sdb/queue/scheduler

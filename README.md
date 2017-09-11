@@ -22,6 +22,11 @@ Send me anything about myUglyScripts right here - on the GitHub.
 
 Here I will write something about revision
 
-Right now revision is 0.0.0
+
+Right now revision is *0.0.0*
+
 Because Im not prepared scripts for something like usable migrating from my NAS to any other
-So, these scripts must be beautify. After something action =)
+
+So, these scripts must be beautify.
+
+After something action =)

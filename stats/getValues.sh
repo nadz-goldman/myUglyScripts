@@ -60,6 +60,11 @@ memory)
     echo $DATA | awk '{print $3}'
 ;;
 
+temp)
+    temp=$(fan_control -g 0 | awk '{print $4}')
+    echo $temp
+;;
+
 *)
     echo "* Usage: $0 processes | cpuload | network-established | network-bytes | transmission-bytes | disk-usage | uptime | vmstat-user-system | memory"
     exit 1

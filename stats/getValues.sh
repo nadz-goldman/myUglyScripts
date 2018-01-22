@@ -1,8 +1,14 @@
 #!/mnt/HD/HD_a2/ffp/bin/bash
 
+#
+# Script for MRTG
+#
+
 case $1 in
 processes)
+    # running processes
     cat /proc/loadavg | tr \/ " " | awk {'print $4'}
+    # total processes
     cat /proc/loadavg | tr \/ " " | awk {'print $5'}
 ;;
  
@@ -18,7 +24,9 @@ network-established)
 
 network-bytes)
     DATA=`grep egiga0 /proc/net/dev`
+    # RX
     echo $DATA | awk '{print $2}'
+    # TX
     echo $DATA | awk '{print $10}'
 ;;
 
@@ -65,10 +73,41 @@ temp)
     echo $temp
 ;;
 
+tempULMM-ULLI)
+    t1=$( /opt/bin/curl -s -L "https://api.openweathermap.org/data/2.5/weather?id=524305&appid=SECRET-TOKEN&units=metric" | sed -e 's/[{}]/''/g' | awk -v RS=',"' -F: '/^temp_min/ {print $2}' )
+    t2=$( /opt/bin/curl -s -L "https://api.openweathermap.org/data/2.5/weather?id=536203&appid=SECRET-TOKEN&units=metric" | sed -e 's/[{}]/''/g' | awk -v RS=',"' -F: '/^temp_min/ {print $2}' )
+# Magic!
+# Because MRTG can not operate with negative numbers!
+# Yes! MRTG! Negative numbers! Year 2018!!!
+# Olololo!!!!!
+    r1=$(( 0 > t1  ))
+    if [[ $r1 -eq 1 ]] ; then
+        r11=$(( 100$t1 ))
+        echo $r11
+    else
+        r11=$(( 100+$t1 ))
+        echo $r11
+    fi
+
+    r1=$(( 0 > t2  ))
+    if [[ $r1 -eq 1 ]] ; then
+        r11=$(( 100$t2 ))
+        echo $r11
+    else
+        r11=$(( 100+$t2 ))
+        echo $r11
+    fi
+;;
+
 *)
-    echo "* Usage: $0 processes | cpuload | network-established | network-bytes | transmission-bytes | disk-usage | uptime | vmstat-user-system | memory"
+    echo "* Usage: $0 "
+    echo "         processes | cpuload"
+    echo "         network-established | network-bytes | transmission-bytes"
+    echo "         disk-usage | vmstat-user-system | memory"
+    echo "         uptime"
+    echo "         temp | tempULMM-ULLI"
     exit 1
 ;;
 esac
- 
+
 exit 0
